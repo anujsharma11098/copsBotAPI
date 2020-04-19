@@ -1,0 +1,6 @@
+npm init -y
+npm i -D dotenv nodemon
+npm i express cors mongoose
+npm i telesignsdk
+npm i jsonwebtoken
+npm i bcryptjs

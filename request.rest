@@ -1,0 +1,50 @@
+GET http://localhost:5000/
+
+
+### Get all Users
+GET http://localhost:5000/api/users
+
+
+### Add User
+POST http://localhost:5000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "Anuj Sharma",
+    "phoneNumber": "7726062540",
+    "IMEI": "1646154",
+    "latitude": "23.432521",
+    "longitude": "73.432515",
+    "password": "password"
+}
+
+
+### Login User
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "7726062540",
+    "password": "password"
+}
+
+
+### Get all Complaints
+
+GET http://localhost:5000/api/complaints
+
+
+### Add Complaint
+
+POST http://localhost:5000/api/complaints
+Content-Type: application/json
+
+{
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZTljNGY3YmQ4NzlhODMxMDhkNTkyMjJcIixcIm5hbWVcIjpcIkFudWogU2hhcm1hXCIsXCJwaG9uZU51bWJlclwiOjc3MjYwNjI1NDAsXCJJTUVJXCI6MTY0NjE1NCxcImxhdGl0dWRlXCI6MjMuNDMyNTIxLFwibG9uZ2l0dWRlXCI6NzMuNDMyNTE1LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRuVkNwaG85NUxXYUVuUjFZdHFJaFN1bWVsZGtEV1VnSS44OW1CbnlSSFUyY0ZRYk1Pb3hJdVwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTE5VDEzOjE3OjQ3Ljg0MFpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0xOVQxMzoxNzo0Ny44NDBaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4NzMwMjI2N30.MlcOVD0K1kDGB4HyVOQpHbVjYREYhipMzHQ_PU0dySo",
+    "victimName": "Pappu",
+    "complaint": "Child Labor",
+    "age":"24",
+    "gender": "M",
+    "iLatitude":"23.453265",
+    "iLongitude":"73.432515"
+}
