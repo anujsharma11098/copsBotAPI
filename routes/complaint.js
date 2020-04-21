@@ -27,7 +27,7 @@ router.post('/', authToken, async (req, res) => {
     const { victimName, complaint, age, gender, iLatitude, iLongitude } = req.body
     try {
         await Complaint.create({
-           userId: req.user._id, victimName, complaint, age, gender, iLatitude, iLongitude, status: 0
+            userId: req.user._id, victimName, complaint, age, gender, iLatitude, iLongitude, status: 0
         })
         res.status(201).send('Complaint Registered Successfully')
     } catch (err) {
