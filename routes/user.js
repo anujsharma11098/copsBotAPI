@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
         const accessToken = jwt.sign({
             data: JSON.stringify(user)
         }, process.env.JWT_SECRET)
-        res.status(201).send(accessToken)
+        res.status(201).json({ status: 200, token: accessToken })
     } catch (err) {
         console.log(err)
         res.status(500).json({ status: 500, error: err })
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
     const accessToken = jwt.sign({
         data: JSON.stringify(user)
     }, process.env.JWT_SECRET)
-    res.status(201).send(accessToken)
+    res.json({ status:200, token: accessToken })
 })
 
 module.exports = router
