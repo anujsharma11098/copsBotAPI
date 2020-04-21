@@ -25,6 +25,8 @@ router.post('/register', async (req, res) => {
         }, process.env.JWT_SECRET)
         res.status(201).json({ status: 201, token: accessToken })
     } catch (err) {
+        if (err.code === 11000)
+            return res.status(400).json({ status: 400, message: 'User already Exists!' })
         console.log(err)
         res.status(500).json({ status: 500, error: err })
     }

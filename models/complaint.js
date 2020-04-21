@@ -29,6 +29,10 @@ const ComplaintSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    region: {
+        type: String,
+        required: true
+    },
     status: {
         type: Number,
         required: true
