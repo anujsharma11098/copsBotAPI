@@ -34,13 +34,36 @@ Content-Type: application/json
 GET http://localhost:5000/api/complaints
 
 
+### Get all Fake Complaints
+
+GET http://localhost:5000/api/complaints?fake=true
+
+
+### Get all Solved Complaints
+
+GET http://localhost:5000/api/complaints?solved=true
+
+
+### Get a Complaint by id
+
+GET http://localhost:5000/api/complaints/5e9eb689ac6ba51a3048fb98
+
+
+### Change Status of a complaint
+CHECKOUT http://localhost:5000/api/complaints/5e9ec2338bcc113f7496c2f3
+
+
+### Delete a Complaint
+DELETE http://localhost:5000/api/complaints/5e9eb689ac6ba51a3048fb98
+
+
 ### Add Complaint
 
 POST http://localhost:5000/api/complaints
 Content-Type: application/json
 
 {
-    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZTllYWJjNDU1NjFhMzAwMTc2YTMwODJcIixcIm5hbWVcIjpcIkJoYXZpdFwiLFwicGhvbmVOdW1iZXJcIjo3NTk3OTE3MDA3LFwiSU1FSVwiOjg2ODExNjA0NzA3MzgzMyxcImxhdGl0dWRlXCI6MjQuNTc2OTUyLFwibG9uZ2l0dWRlXCI6NzQuMjU3ODk0LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRxcXJHYUI1S2VaVlNKZmdmQ3VURUx1YTZQRXF2VUhENDFTcU03dHFnY3dMdW5VTWVDNlpTaVwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTIxVDA4OjE2OjA0LjIwMlpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0yMVQwODoxNjowNC4yMDJaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4NzQ1NzI2Nn0.5U8raHS7q0MCKwxsNbHtvFNr0-Fz0bg172iiPQ9XU7o",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZTllYWU1YjJiYzY3MDAwMTdkMTk0MzlcIixcIm5hbWVcIjpcIkJoYXZpdFwiLFwicGhvbmVOdW1iZXJcIjo3NTk3OTE3MDA3LFwiSU1FSVwiOjg2ODExNjA0NzA3MzgzMyxcImxhdGl0dWRlXCI6MjQuNTc2OTUyLFwibG9uZ2l0dWRlXCI6NzQuMjU3ODk0LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRpUzlRSGV5a2F4am43N1RvVnJaVEouQk12eTlqQ1Zvdms5cm9WNEtEc3RvOUdFNU9nOHdWaVwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTIxVDA4OjI3OjA3LjE4MlpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0yMVQwODoyNzowNy4xODJaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4NzQ1OTcxMX0.I4DwQZVCN5dFaV5YQAzFchQ7ggwLuEXjSNz9P5NLuB0",
     "victimName": "Pappu",
     "complaint": "Child Labor",
     "age":"24",
