@@ -6,8 +6,9 @@ const bcrypt = require('bcryptjs')
 const router = express.Router()
 
 const User = require('../models/user')
+const authAdmin = require('../middlewares/authAdmin')
 
-router.get('/', async (req, res) => {
+router.get('/', authAdmin, async (req, res) => {
     const users = await User.find()
     res.json({ status: 200, users })
 })
@@ -28,7 +29,7 @@ router.post('/register', async (req, res) => {
         if (err.code === 11000)
             return res.status(400).json({ status: 400, message: 'User already Exists!' })
         console.log(err)
-        res.status(500).json({ status: 500, error: err })
+        res.status(500).json({ status: 500, message: 'Internal Server Error', error: err })
     }
 })
 

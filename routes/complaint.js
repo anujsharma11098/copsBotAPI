@@ -8,8 +8,9 @@ const FakeComplaint = require('../models/fakeComplaint')
 const SolvedComplaint = require('../models/solvedComplaint')
 const authToken = require('../middlewares/authToken')
 const { getRegion } = require('../util')
+const authAdmin = require('../middlewares/authAdmin')
 
-router.get('/', async (req, res) => {
+router.get('/', authAdmin, async (req, res) => {
     let complaints
     if (req.query.fake == 'true')
         complaints = await FakeComplaint.aggregate([
@@ -59,7 +60,7 @@ router.get('/', async (req, res) => {
     res.json({ status: 200, complaints })
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authAdmin, async (req, res) => {
     let complaints
     let complaint
     try {
@@ -146,7 +147,7 @@ router.post('/', authToken, async (req, res) => {
     }
 })
 
-router.checkout('/:id', async (req, res) => {
+router.checkout('/:id', authAdmin, async (req, res) => {
     let complaint
     try {
         complaint = await Complaint.findOne({ _id: req.params.id })
@@ -186,7 +187,7 @@ router.checkout('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authAdmin, async (req, res) => {
     try {
         const complaint = await Complaint.findOne({ _id: req.params.id })
         if (!complaint)

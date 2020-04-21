@@ -71,3 +71,31 @@ Content-Type: application/json
     "iLatitude":"23.453265",
     "iLongitude":"73.432515"
 }
+
+
+### Get all Regions
+GET http://localhost:5000/api/regions
+
+
+### Dashboard Register
+POST http://localhost:5000/api/dashboard/register
+Authorization: 
+Content-Type: application/json
+
+{
+    "username": "jawarmines",
+    "region": "JAWAR MINES",
+    "password": "password"
+}
+
+
+### Dashboard Login
+POST http://localhost:5000/api/dashboard/login
+Content-Type: application/json
+
+{
+    "username": "superadmin",
+    "password": "password"
+}
+
+###
