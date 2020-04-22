@@ -214,8 +214,6 @@ router.checkout('/:id', authAdmin, async (req, res) => {
     let complaint
     try {
         complaint = await Complaint.findOne({ _id: req.params.id })
-        if (complaint.status === 1)
-            return res.status(400).json({ status: 400, message: 'You cannot delete active complaint' })
     } catch (err) {
         if (err.message.includes('Cast to ObjectId failed for value'))
             return res.status(404).json({ status: 404, message: 'Complaint not found' })
@@ -255,6 +253,8 @@ router.checkout('/:id', authAdmin, async (req, res) => {
 router.delete('/:id', authAdmin, async (req, res) => {
     try {
         const complaint = await Complaint.findOne({ _id: req.params.id })
+        if (complaint.status === 1)
+            return res.status(400).json({ status: 400, message: 'You cannot delete active complaint' })
         if (!complaint)
             return res.status(404).json({ status: 404, message: 'Complaint not found' })
         await FakeComplaint.create({
