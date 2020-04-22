@@ -8,6 +8,23 @@ const authSuperAdmin = require('../middlewares/authSuperAdmin')
 
 const router = express.Router()
 
+router.get('/users', authSuperAdmin, async (req, res) => {
+    const users = await DashboardUser.find()
+    res.json({ status: 200, message: users })
+})
+
+router.delete('/:id', authSuperAdmin, async (req, res) => {
+    const user = await DashboardUser.findOne({ _id: req.params.id })
+    try {
+        if (!user)
+            return res.status(404).json({ status: 404, message: 'Not Found' })
+        await user.remove()
+        res.status(200).json({ status: 200, message: 'User deleted successfully' })
+    } catch (err) {
+        return res.status(400).json({ status: 400, message: 'Invalid id' })
+    }
+})
+
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     if (!username || !password)

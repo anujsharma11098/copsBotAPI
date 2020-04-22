@@ -8,9 +8,9 @@ module.exports = async (req, res, next) => {
         const result = await jwt.verify(token, process.env.JWT_SECRET)
         req.user = JSON.parse(result.data)
         if (!req.user.role)
-            return res.status(401).json({ status: 401 })
+            return res.status(401).json({ status: 401, message: 'Not Allowed' })
         if (req.user.role !== 'superadmin')
-            return res.status(403).json({ status: 403 })
+            return res.status(403).json({ status: 403, message: 'You dont have enough rights for this' })
     } catch (err) {
         return res.status(401).send('User Unauthorised')
     }
