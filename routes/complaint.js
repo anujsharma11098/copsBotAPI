@@ -12,51 +12,114 @@ const authAdmin = require('../middlewares/authAdmin')
 
 router.get('/', authAdmin, async (req, res) => {
     let complaints
-    if (req.query.fake == 'true')
-        complaints = await FakeComplaint.aggregate([
-            {
-                $lookup: {
-                    from: 'users',
-                    localField: 'userId',
-                    foreignField: '_id',
-                    as: 'userInfo'
+    if (req.user.role == 'superadmin') {
+        if (req.query.fake == 'true')
+            complaints = await FakeComplaint.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }, {
-                $sort: {
-                    createdAt: -1
+            ])
+        else if (req.query.solved == 'true')
+            complaints = await SolvedComplaint.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }
-        ])
-    else if (req.query.solved == 'true')
-        complaints = await SolvedComplaint.aggregate([
-            {
-                $lookup: {
-                    from: 'users',
-                    localField: 'userId',
-                    foreignField: '_id',
-                    as: 'userInfo'
+            ])
+        else
+            complaints = await Complaint.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }, {
-                $sort: {
-                    createdAt: -1
+            ])
+    } else {
+        if (req.query.fake == 'true')
+            complaints = await FakeComplaint.aggregate([
+                {
+                    $match: {
+                        region: req.user.region
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }
-        ])
-    else
-        complaints = await Complaint.aggregate([
-            {
-                $lookup: {
-                    from: 'users',
-                    localField: 'userId',
-                    foreignField: '_id',
-                    as: 'userInfo'
+            ])
+        else if (req.query.solved == 'true')
+            complaints = await SolvedComplaint.aggregate([
+                {
+                    $match: {
+                        region: req.user.region
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }, {
-                $sort: {
-                    createdAt: -1
+            ])
+        else
+            complaints = await Complaint.aggregate([
+                {
+                    $match: {
+                        region: req.user.region
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'userInfo'
+                    }
+                }, {
+                    $sort: {
+                        createdAt: -1
+                    }
                 }
-            }
-        ])
+            ])
+    }
     res.json({ status: 200, complaints })
 })
 
