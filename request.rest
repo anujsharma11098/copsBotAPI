@@ -32,7 +32,7 @@ Content-Type: application/json
 ### Get all Complaints
 
 GET http://localhost:5000/api/complaints
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZTllZTA2NDEwODI0YjE2ZGM0OGRkYzJcIixcInVzZXJuYW1lXCI6XCJzdXBlcmFkbWluXCIsXCJwYXNzd29yZFwiOlwiJDJhJDEwJHQ2emhBejRlaGI2T1hTMGI5dWFuRXVRVUtyZmlSa0t1TGx5ZFB3RWlOZlFXQWl5TG1sdU82XCIsXCJyZWdpb25cIjpcImdsb2JhbFwiLFwicm9sZVwiOlwic3VwZXJhZG1pblwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTIxVDEyOjAwOjM2Ljg3N1pcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0yMVQxMjowMDozNi44NzdaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4NzU0MjE0M30.9-feKY7eiNs6LZU2NXqjSEh06YABl7wgw0IODfR9GH0
+Authorization: 
 
 
 ### Get all Fake Complaints
@@ -64,7 +64,7 @@ POST http://localhost:5000/api/complaints
 Content-Type: application/json
 
 {
-    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZTllYWU1YjJiYzY3MDAwMTdkMTk0MzlcIixcIm5hbWVcIjpcIkJoYXZpdFwiLFwicGhvbmVOdW1iZXJcIjo3NTk3OTE3MDA3LFwiSU1FSVwiOjg2ODExNjA0NzA3MzgzMyxcImxhdGl0dWRlXCI6MjQuNTc2OTUyLFwibG9uZ2l0dWRlXCI6NzQuMjU3ODk0LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRpUzlRSGV5a2F4am43N1RvVnJaVEouQk12eTlqQ1Zvdms5cm9WNEtEc3RvOUdFNU9nOHdWaVwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTIxVDA4OjI3OjA3LjE4MlpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0yMVQwODoyNzowNy4xODJaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4NzQ1OTcxMX0.I4DwQZVCN5dFaV5YQAzFchQ7ggwLuEXjSNz9P5NLuB0",
+    "authorization": "",
     "victimName": "Pappu",
     "complaint": "Child Labor",
     "age":"24",
@@ -98,5 +98,15 @@ Content-Type: application/json
     "username": "superadmin",
     "password": "password"
 }
+
+### Get all dashboard users
+GET http://localhost:5000/api/dashboard/users
+Authorization: 
+
+
+### Delete dashboard admin
+DELETE http://localhost:5000/api/dashboard/users/5ea039588eb71f18d075b3c4
+Authorization: 
+
 
 ###

@@ -9,13 +9,13 @@ const authSuperAdmin = require('../middlewares/authSuperAdmin')
 const router = express.Router()
 
 router.get('/users', authSuperAdmin, async (req, res) => {
-    const users = await DashboardUser.find()
+    const users = await DashboardUser.find({ role: { $ne: 'superadmin' } })
     res.json({ status: 200, message: users })
 })
 
-router.delete('/:id', authSuperAdmin, async (req, res) => {
-    const user = await DashboardUser.findOne({ _id: req.params.id })
+router.delete('/users/:id', authSuperAdmin, async (req, res) => {
     try {
+        const user = await DashboardUser.findOne({ _id: req.params.id })
         if (!user)
             return res.status(404).json({ status: 404, message: 'Not Found' })
         await user.remove()
