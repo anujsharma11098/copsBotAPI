@@ -38,24 +38,44 @@ Authorization:
 ### Get all Fake Complaints
 
 GET http://localhost:5000/api/complaints?fake=true
+Authorization: 
 
 
 ### Get all Solved Complaints
 
 GET http://localhost:5000/api/complaints?solved=true
+Authorization: 
 
 
 ### Get a Complaint by id
 
-GET http://localhost:5000/api/complaints/5e9eb689ac6ba51a3048fb98
+GET http://localhost:5000/api/complaints/5ea162d233b3e93fd0ecb814
+Authorization: 
 
 
 ### Change Status of a complaint
-CHECKOUT http://localhost:5000/api/complaints/5e9ec2338bcc113f7496c2f3
+CHECKOUT http://localhost:5000/api/complaints/5ea162d233b3e93fd0ecb814
+Authorization: 
+Content-Type: application/json
+
+{
+    "reason": "lol2"
+}
 
 
 ### Delete a Complaint
-DELETE http://localhost:5000/api/complaints/5e9eb689ac6ba51a3048fb98
+DELETE http://localhost:5000/api/complaints/5ea162d233b3e93fd0ecb814
+Authorization: 
+Content-Type: application/json
+
+{
+    "reason": "lol"
+}
+
+
+### Restore Complaint
+PUT http://localhost:5000/api/complaints/5ea162d233b3e93fd0ecb814
+Authorization: 
 
 
 ### Add Complaint
@@ -101,11 +121,6 @@ Content-Type: application/json
 
 ### Get all dashboard users
 GET http://localhost:5000/api/dashboard/users
-Authorization: 
-
-
-### Delete dashboard admin
-DELETE http://localhost:5000/api/dashboard/users/5ea039588eb71f18d075b3c4
 Authorization: 
 
 

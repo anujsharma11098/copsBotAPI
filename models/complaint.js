@@ -36,7 +36,10 @@ const ComplaintSchema = new mongoose.Schema({
     status: {
         type: Number,
         required: true
-    }
+    },
+    changeStatusReason1: String,
+    changeStatusReason2: String,
+    deleteReason: String,
 }, {
     timestamps: true
 })

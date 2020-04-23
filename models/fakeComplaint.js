@@ -37,6 +37,9 @@ const FakeComplaintSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    changeStatusReason1: String,
+    changeStatusReason2: String,
+    deleteReason: String,
     deletedAt: Date
 }, {
     timestamps: true

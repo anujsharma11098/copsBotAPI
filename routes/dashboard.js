@@ -13,18 +13,6 @@ router.get('/users', authSuperAdmin, async (req, res) => {
     res.json({ status: 200, message: users })
 })
 
-router.delete('/users/:id', authSuperAdmin, async (req, res) => {
-    try {
-        const user = await DashboardUser.findOne({ _id: req.params.id })
-        if (!user)
-            return res.status(404).json({ status: 404, message: 'Not Found' })
-        await user.remove()
-        res.status(200).json({ status: 200, message: 'User deleted successfully' })
-    } catch (err) {
-        return res.status(400).json({ status: 400, message: 'Invalid id' })
-    }
-})
-
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     if (!username || !password)

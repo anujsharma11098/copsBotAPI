@@ -12,6 +12,7 @@ const DashboardUserSchema = new mongoose.Schema({
     },
     region: {
         type: String,
+        unique: true,
         required: true
     },
     role: {

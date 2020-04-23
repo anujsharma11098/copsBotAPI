@@ -9,7 +9,7 @@ const mongodb = require('./db/MongoDB')
 
 app.use(cors({
     origin: '*',
-    methods: 'GET,POST,CHECKOUT,DELETE',
+    methods: 'GET,POST,PUT,CHECKOUT,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204
 }))
