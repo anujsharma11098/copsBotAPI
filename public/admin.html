@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Station Admin</title>
+    <link rel="shortcut icon" type="image/png" href="new_up.jpeg">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- Material Kit CSS -->
+    <link href="./assets/css/material-dashboard.css" rel="stylesheet" />
+    <link href="./assets/demo/demo.css" rel="stylesheet" />
+    <!--      <link href="{{ url_for('static', filename='material-dashboard.css')}}" rel="stylesheet" />-->
+
+    <!--  <link href="./assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />-->
+    <!--    <link href="./assets2/css/fresh-bootstrap-table.css" rel="stylesheet" />-->
+    <!--  <link href="./assets2/css/demo.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
+</head>
+
+<body class="dark-edition">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
+            <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+            <div class="logo">
+                <a href="#" class="simple-text logo-normal">
+                    CopsBot
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item active  ">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <i class="material-icons"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <!-- your sidebar here -->
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:void(0)">"Region" COMPLAINTS </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <div>
+                                <div class="collapse navbar-collapse justify-content-end">
+
+                                    <div class="input-group no-border">
+                                        <input type="text" value="" id="search-input" onkeyup="search()"
+                                            class="form-control" placeholder="Search...">
+
+                                    </div>
+
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#!" onclick="logout()">
+                                                <i class="material-icons">power_settings_new</i>
+                                                <p class="d-lg-none d-md-block">
+                                                    Logout
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <!-- your navbar here -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <!--Table-->
+                            <table class="table table-hover">
+                                <!--Table head-->
+
+                                <!--Table-->
+                                <table class="table table-hover">
+                                    <!--Table head-->
+                                    <thead class="mdb-color darken-3">
+                                        <tr class="text-white">
+                                            <th>Sr. No.</th>
+                                            <th>Full Name</th>
+                                            <th>Complaints</th>
+                                            <th>Status</th>
+                                            <th>Location</th>
+                                            <th>Data</th>
+                                            <th>Share</th>
+                                            <th>Delete</th>
+
+                                        </tr>
+                                    </thead>
+                                    <!--Table head-->
+                                    <!--Table body-->
+
+                                    <tbody class="complaints">
+
+
+                                    </tbody>
+                                    <!--Table body-->
+                                </table>
+                                <!--Table-->
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color:#212529; color:#eee;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Info</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="color:#FFFFFF;">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" style="margin: 15px;background-color:#3C4858">
+                                <div class="tital">Full Name :&emsp;&emsp;&emsp;<span id="fullName"
+                                        style="color:#FFFFFF;width:100%;"> </span></div>
+                                <div class="tital">Complaint :&emsp;&emsp;&emsp;<span id="complaints"
+                                        style="color:#FFFFFF;">
+                                    </span></div>
+                                <div class="tital">Age :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="age"
+                                        style="color:#FFFFFF;"> </span></div>
+                                <div class="tital">Gender :&emsp;&emsp;&emsp;&emsp;&emsp;<span id="gender"
+                                        style="color:#FFFFFF;"> </span></div>
+                                <div class="tital">Phone Number :&emsp;<span id="phno" style="color:#FFFFFF"></span>
+                                </div>
+                                <div class="tital">IMEI :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i id="imei"
+                                        style="color:#FFFFFF;"> </i></div>
+                                <div class="tital">Date of Incident :&emsp;<span id="date" style="color:#FFFFFF;">
+                                    </span></div>
+                                <div class="tital">Time of Incident :&emsp;<span id="time" style="color:#FFFFFF;">
+                                    </span></div>
+                                <div class="tital">Place of Incident :&emsp;<span id="place" style="color:#FFFFFF;">
+                                    </span></div>
+                                <div class="tital">Status :&emsp;&emsp;&emsp;&emsp;&emsp;<span id="status"
+                                        style="color:#FFFFFF;"> </span></div>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="my_Modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color:#212529; color:#FFFFFF; ">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Send to Whatsapp</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="color:#FFFFFF;">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" style="background-color:#3C4858;">
+                                <!--                                <form>-->
+                                <!--                                    <div class="form-group">-->
+                                <!--                                        <label for="phn"><b>Phone Number</b></label>-->
+                                <!--                                        <input type="text" class="form-control" id="phn"-->
+                                <!--                                            placeholder="Enter Mobile number" style="color:black">-->
+                                <input type="text" hidden="true" id="u_id">
+                                <!--                                    </div>-->
+                                <!--                                </form>-->
+                                <label for="region">REGION :</label>
+                                <select id="region"
+                                    style="width: 100%;  padding: 12px 20px;  margin: 8px 0;  display: inline-block; border: 1px solid #ccc;  border-radius: 4px;  box-sizing: border-box;">
+                                    <option value="SURAJPOLE">SURAJPOLE</option>
+                                    <option value="GHANTAGHAR">GHANTAGHAR</option>
+                                    <option value="AMBAMATA">AMBAMATA</option>
+                                    <option value="MAHILA THANA">MAHILA THANA</option>
+                                    <option value="GOVERDHAN VILAS">GOVERDHAN VILAS</option>
+                                    <option value="DABOK">DABOK</option>
+                                    <option value="AYAD">AYAD</option>
+                                    <option value="JAWAR MINES">JAWAR MINES</option>
+                                    <option value="HATHIPOLE">HATHIPOLE</option>
+                                    <option value="DHANMANDI">DHANMANDI</option>
+                                    <option value="HIRAN MAGRI">HIRAN MAGRI</option>
+                                    <option value="SUKHER">SUKHER</option>
+                                    <option value="PRATAPNAGAR">PRATAPNAGAR</option>
+                                    <option value="BHUPALPURA">BHUPALPURA</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="NEARBY" selected="selected">NEARBY</option>
+                                </select>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a id="" onclick="notify()" class="btn btn-default">Submit</a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="float-left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        CopsBot
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="copyright float-right">
+                            &copy;
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>, made with <i class="material-icons">favorite</i> by
+                            <a href="#" target="_blank">CopsBot</a> for a better web.
+                        </div>
+                        <!-- your footer here -->
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <!--   Core JS Files   -->
+
+        <script src="./static/core/jquery.min.js"></script>
+        <script src="./static/core/popper.min.js"></script>
+        <script src="./static/core/bootstrap-material-design.min.js"></script>
+        <script src="https://unpkg.com/default-passive-events"></script>
+        <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Chartist JS -->
+        <script src="./static/plugins/chartist.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+        <script src="./static/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="./static/material-dashboard.js?v=2.1.0"></script>
+        <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+        <script src="./javascript/script.js"></script>
+        <script src="./javascript/admin.js"></script>
+        <script>
+            $(document).ready(function () {
+                $().ready(function () {
+                    $sidebar = $('.sidebar');
+
+                    $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                    $full_page = $('.full-page');
+
+                    $sidebar_responsive = $('body > .navbar-collapse');
+
+                    window_width = $(window).width();
+
+                    $('.fixed-plugin a').click(function (event) {
+                        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                        if ($(this).hasClass('switch-trigger')) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (window.event) {
+                                window.event.cancelBubble = true;
+                            }
+                        }
+                    });
+
+                    $('.fixed-plugin .active-color span').click(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-color', new_color);
+                        }
+
+                        if ($full_page.length != 0) {
+                            $full_page.attr('filter-color', new_color);
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.attr('data-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .background-color .badge').click(function () {
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('background-color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-background-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .img-holder').click(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).parent('li').siblings().removeClass('active');
+                        $(this).parent('li').addClass('active');
+
+
+                        var new_image = $(this).find("img").attr('src');
+
+                        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            $sidebar_img_container.fadeOut('fast', function () {
+                                $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                                $sidebar_img_container.fadeIn('fast');
+                            });
+                        }
+
+                        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $full_page_background.fadeOut('fast', function () {
+                                $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                                $full_page_background.fadeIn('fast');
+                            });
+                        }
+
+                        if ($('.switch-sidebar-image input:checked').length == 0) {
+                            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                        }
+                    });
+
+                    $('.switch-sidebar-image input').change(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $input = $(this);
+
+                        if ($input.is(':checked')) {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar_img_container.fadeIn('fast');
+                                $sidebar.attr('data-image', '#');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page_background.fadeIn('fast');
+                                $full_page.attr('data-image', '#');
+                            }
+
+                            background_image = true;
+                        } else {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar.removeAttr('data-image');
+                                $sidebar_img_container.fadeOut('fast');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page.removeAttr('data-image', '#');
+                                $full_page_background.fadeOut('fast');
+                            }
+
+                            background_image = false;
+                        }
+                    });
+
+                    $('.switch-sidebar-mini input').change(function () {
+                        $body = $('body');
+
+                        $input = $(this);
+
+                        if (md.misc.sidebar_mini_active == true) {
+                            $('body').removeClass('sidebar-mini');
+                            md.misc.sidebar_mini_active = false;
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                        } else {
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                            setTimeout(function () {
+                                $('body').addClass('sidebar-mini');
+
+                                md.misc.sidebar_mini_active = true;
+                            }, 300);
+                        }
+
+                        // we simulate the window Resize so the charts will get updated in realtime.
+                        var simulateWindowResize = setInterval(function () {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 180);
+
+                        // we stop the simulation of Window Resize after the animations are completed
+                        setTimeout(function () {
+                            clearInterval(simulateWindowResize);
+                        }, 1000);
+
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(() => {
+                getComplaints()
+                setInterval(() => {
+                    getComplaints()
+                }, 10000)
+            })
+            let ogComplaints
+            const getComplaints = async () => {
+                let result = await fetch('https://copsbot-api.herokuapp.com/api/complaints', {
+                    headers: {
+                        'Authorization': user.token
+                    }
+                })
+                result = await result.json()
+                const fetchedComplaints = result.complaints
+                let element
+                let c = 1
+                for (let i = fetchedComplaints.length - 1; i >= 0; i--) {
+                    let button
+                    switch (fetchedComplaints[i]['status']) {
+                        case 0:
+                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-warning" onclick="changeStatus('${fetchedComplaints[i]._id}')" >Pending</a></td>`
+                            break;
+                        case 1:
+                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-success" onclick="changeStatus('${fetchedComplaints[i]._id}')" >Active</a></td>`
+                            break;
+                        case 2:
+                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-danger" onclick="changeStatus('${fetchedComplaints[i]._id}')" >Closed</a></td>`
+                            break;
+                    }
+                    let e = `<tr>
+                    <th scope="row">${c}<input type='text' hidden='true' value='${fetchedComplaints[i]._id}'></th>
+                                <td>${fetchedComplaints[i].victimName}</td>
+                    <td>${fetchedComplaints[i].complaint}</td>
+                    ${button}
+                    <td><a href="./map.html?lat=${fetchedComplaints[i].iLatitude}&lng=${fetchedComplaints[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
+                    <td><a class="btn btn-sm btn-default" onclick="info('${fetchedComplaints[i]._id}')" >More Info</a></td>
+                    <td><a class="btn btn-sm btn-success" onclick="whatsapp('${fetchedComplaints[i]._id}')" ><i class="fab fa-whatsapp"></i></a></td>
+                    <td><a class="btn btn-sm btn-danger" onclick="delete_complaint('${fetchedComplaints[i]._id}')" ><i class="fas fa-trash"></i></a></td>
+                    </tr>`
+                    element = element + e
+                    c++
+                }
+                $('.complaints').empty()
+                $('.complaints').append(element)
+                ogComplaints = element
+                if (result.newComplaintsCount > 0) {
+                    iziToast.show({
+                        timeout: 3000,
+                        position: 'topRight',
+                        theme: 'dark',
+                        transitionIn: 'fadeInLeft',
+                        message: `${result.newComplaintsCount} New Complaints`
+                    });
+                }
+            }
+            function changeStatus(id) {
+                iziToast.question({
+                    timeout: 20000,
+                    close: false,
+                    overlay: true,
+                    displayMode: 'once',
+                    id: 'statusQuestion',
+                    zindex: 999,
+                    title: 'Reason?',
+                    message: 'Why you want to change status',
+                    position: 'center',
+                    drag: false,
+                    inputs: [
+                        ['<input type="text" id="changeStatusQuestion">']
+                    ],
+                    buttons: [
+                        ['<button><b>Confirm</b></button>', function (instance, toast) {
+                            let reason = $('#changeStatusQuestion').val()
+                            if (!reason)
+                                return iziToast.warning({
+                                    title: 'Caution',
+                                    message: 'Reason is required',
+                                });
+                            let obj = {
+                                reason
+                            }
+                            fetch('https://copsbot-api.herokuapp.com/api/complaints/' + id, {
+                                method: 'CHECKOUT',
+                                headers: {
+                                    'Authorization': user.token,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(obj)
+                            }).then(res => res.json()).then(json => {
+                                if (json.status !== 200)
+                                    return iziToast.error({
+                                        title: 'Error',
+                                        message: json.message,
+                                    });
+                                if (json.statusBefore == 0) {
+                                    $(`#${id}`).text('Active')
+                                    $(`#${id}`).addClass('btn-success')
+                                }
+                                else if (json.statusBefore == 1) {
+                                    $(`#${id}`).text('Closed')
+                                    $(`#${id}`).addClass('btn-danger')
+                                    setTimeout(() => {
+                                        location.reload()
+                                    }, 1500)
+                                }
+                            }).catch(err => {
+                                console.log(err)
+                            })
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                        }, true],
+                        ['<button>Cancel</button>', function (instance, toast) {
+
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                        }],
+                    ]
+                });
+            }
+            function info(id) {
+                console.log(id)
+                fetch(`https://copsbot-api.herokuapp.com/api/complaints/${id}`, {
+                    headers: {
+                        'Authorization': user.token
+                    }
+                }).then(res => res.json()).then(json => {
+                    console.log(json)
+                    $('#fullName').text(json.complaint.victimName)
+                    $('#complaints').text(json.complaint.complaint)
+                    $('#age').text(json.complaint.age)
+                    $('#imei').text(json.complaint.userInfo[0].IMEI)
+                    $('#phno').text(json.complaint.userInfo[0].phoneNumber)
+                    let d = json.complaint.createdAt
+                    d = d.split('T')
+                    $('#date').text(d[0])
+                    $('#time').text(d[1])
+                    $('#place').text(json.complaint.iLatitude + ' ' + json.complaint.iLongitude)
+                    switch (json.complaint.gender) {
+                        case 'M':
+                            $('#gender').text('Male')
+                            break;
+                        case 'F':
+                            $('#gender').text('Female')
+                            break;
+                        default:
+                            $('#gender').text('Other')
+                            break;
+                    }
+                    switch (json.complaint.status) {
+                        case 0:
+                            $('#status').text('Pending')
+                            break;
+                        case 1:
+                            $('#status').text('Active')
+                            break;
+                    }
+                }).catch(err => console.log(err))
+                $("#myModal").modal()
+            }
+
+            function delete_complaint(id) {
+                iziToast.question({
+                    timeout: 20000,
+                    close: false,
+                    overlay: true,
+                    displayMode: 'once',
+                    id: 'statusQuestion',
+                    zindex: 999,
+                    title: 'Delete?',
+                    message: 'Why you want to delete this?',
+                    position: 'center',
+                    drag: false,
+                    inputs: [
+                        ['<input type="text" id="deleteQuestion">']
+                    ],
+                    buttons: [
+                        ['<button><b>Confirm</b></button>', function (instance, toast) {
+                            let reason = $('#deleteQuestion').val()
+                            if (!reason)
+                                return iziToast.warning({
+                                    title: 'Caution',
+                                    message: 'Reason is required',
+                                });
+                            let obj = {
+                                reason
+                            }
+                            fetch(`https://copsbot-api.herokuapp.com/api/complaints/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Authorization': user.token,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(obj)
+                            }).then(res => res.json()).then(json => {
+                                iziToast.show({
+                                    timeout: 3000,
+                                    position: 'topRight',
+                                    theme: 'light',
+                                    color: 'red',
+                                    transitionIn: 'fadeInLeft',
+                                    message: json.message
+                                });
+                                if (json.status === 200) location.reload()
+                            }).catch(err => console.log(err))
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                        }, true],
+                        ['<button>Cancel</button>', function (instance, toast) {
+
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                        }],
+                    ]
+                });
+            }
+
+            function whatsapp(id) {
+                $('#u_id').val(id)
+
+                $("#my_Modal").modal()
+
+            }
+            async function notify() {
+
+                let obj = {
+
+                    region: $("#region option:selected").text(),
+                    complaintId: $('#u_id').val()
+                }
+                $("#my_Modal").modal('toggle')
+                let result = await fetch('https://cops-bot.herokuapp.com/api/whatsapp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(obj)
+                })
+                result = await result.json()
+                console.log(result)
+                iziToast.show({
+                    timeout: 3000,
+                    position: 'topRight',
+                    icon: 'fas fa-check-circle',
+                    iconColor: 'green',
+                    backgroundColor: '#61F75F',
+                    transitionIn: 'fadeInLeft',
+                    message: `Data sent Successfully !!`
+                });
+
+            }
+
+            const search = () => {
+                const resultRows = []
+                const searchInput = $('#search-input').val().toLowerCase()
+                if (searchInput == '' || searchInput == null) {
+                    $('.complaints').empty()
+                    $('.complaints').append(ogComplaints)
+                    return
+                }
+                const tbody = document.querySelector('.complaints')
+                const rows = tbody.getElementsByTagName('tr')
+                rows.forEach(row => {
+                    const head = row.getElementsByTagName('th')
+                    const id = head[0].getElementsByTagName('input')[0].value.toLowerCase()
+                    if (searchInput == id) {
+                        resultRows.push(row)
+                        return
+                    }
+                    const columns = row.getElementsByTagName('td')
+                    const firstColData = columns[0].textContent.toLowerCase()
+                    if (firstColData.includes(searchInput)) {
+                        resultRows.push(row)
+                        return
+                    }
+                    const secondColData = columns[1].textContent.toLowerCase()
+                    if (secondColData.includes(searchInput)) {
+                        resultRows.push(row)
+                        return
+                    }
+                })
+                $('.complaints').empty()
+                resultRows.forEach(row => $('.complaints').append(row))
+            }
+
+
+        </script>
+</body>
+
+</html>

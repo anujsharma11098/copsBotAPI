@@ -1,0 +1,2 @@
+const user = getUser()
+checkUserAdmin()
