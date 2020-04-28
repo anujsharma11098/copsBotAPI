@@ -222,26 +222,6 @@
                                 <input type="text" hidden="true" id="u_id">
                                 <!--                                    </div>-->
                                 <!--                                </form>-->
-                                <label for="region">REGION :</label>
-                                <select id="region"
-                                    style="width: 100%;  padding: 12px 20px;  margin: 8px 0;  display: inline-block; border: 1px solid #ccc;  border-radius: 4px;  box-sizing: border-box;">
-                                    <option value="SURAJPOLE">SURAJPOLE</option>
-                                    <option value="GHANTAGHAR">GHANTAGHAR</option>
-                                    <option value="AMBAMATA">AMBAMATA</option>
-                                    <option value="MAHILA THANA">MAHILA THANA</option>
-                                    <option value="GOVERDHAN VILAS">GOVERDHAN VILAS</option>
-                                    <option value="DABOK">DABOK</option>
-                                    <option value="AYAD">AYAD</option>
-                                    <option value="JAWAR MINES">JAWAR MINES</option>
-                                    <option value="HATHIPOLE">HATHIPOLE</option>
-                                    <option value="DHANMANDI">DHANMANDI</option>
-                                    <option value="HIRAN MAGRI">HIRAN MAGRI</option>
-                                    <option value="SUKHER">SUKHER</option>
-                                    <option value="PRATAPNAGAR">PRATAPNAGAR</option>
-                                    <option value="BHUPALPURA">BHUPALPURA</option>
-                                    <option value="ALL">ALL</option>
-                                    <option value="NEARBY" selected="selected">NEARBY</option>
-                                </select>
                             </div>
 
                             <!-- Modal footer -->
@@ -558,15 +538,11 @@
 
             function whatsapp(id) {
                 $('#u_id').val(id)
-
                 $("#my_Modal").modal()
-
             }
             async function notify() {
 
                 let obj = {
-
-                    region: $("#region option:selected").text(),
                     complaintId: $('#u_id').val()
                 }
                 $("#my_Modal").modal('toggle')
@@ -578,7 +554,6 @@
                     body: JSON.stringify(obj)
                 })
                 result = await result.json()
-                console.log(result)
                 iziToast.show({
                     timeout: 3000,
                     position: 'topRight',
@@ -588,7 +563,6 @@
                     transitionIn: 'fadeInLeft',
                     message: `Data sent Successfully !!`
                 });
-
             }
 
             const search = () => {
