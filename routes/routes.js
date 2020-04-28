@@ -10,5 +10,6 @@ router.use('/api/users', require('./user'))
 router.use('/api/complaints', require('./complaint'))
 router.use('/api/regions', require('./region'))
 router.use('/api/dashboard', require('./dashboard'))
+router.use('/api/whatsapp', require('./whatsapp'))
 
 module.exports = router
