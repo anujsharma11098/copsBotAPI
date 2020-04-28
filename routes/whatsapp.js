@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     try {
         let fetchedComplaint = await fetch(`http://localhost:${port}/api/complaints/${complaintId}`, {
             headers: {
-                Authorization: req.headers.authorization
+                Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZWExN2YxZTU3N2VlNzE2ZmNjZGI0NGFcIixcInVzZXJuYW1lXCI6XCJzdXBlcmFkbWluXCIsXCJwYXNzd29yZFwiOlwiJDJhJDEwJGk1b3pwUkhlOS9mc2pYQjg4dlA0QWVaM1lBTUVSa0VkcGFqS1ozckNJSks1ZHAxUFhvM29xXCIsXCJyZWdpb25cIjpcIkdMT0JBTFwiLFwicm9sZVwiOlwic3VwZXJhZG1pblwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA0LTIzVDExOjQyOjIyLjA4OVpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNC0yM1QxMTo0MjoyMi4wODlaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU4ODA4MjY5NX0.uHhP4pNAXat-VxOgvOKZ1dPopITwseJ8gwYyMGxVDWI'
             }
         })
         fetchedComplaint = await fetchedComplaint.json()
