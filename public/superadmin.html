@@ -546,14 +546,16 @@
                     complaintId: $('#u_id').val()
                 }
                 $("#my_Modal").modal('toggle')
-                let result = await fetch('https://cops-bot.herokuapp.com/api/whatsapp', {
+                let result = await fetch('https://copsbot-api.herokuapp.com/api/whatsapp', {
                     method: 'POST',
                     headers: {
+                        'Authorization': user.token,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(obj)
                 })
                 result = await result.json()
+                console.log(result)
                 iziToast.show({
                     timeout: 3000,
                     position: 'topRight',
@@ -563,6 +565,7 @@
                     transitionIn: 'fadeInLeft',
                     message: `Data sent Successfully !!`
                 });
+
             }
 
             const search = () => {
