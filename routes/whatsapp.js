@@ -31,10 +31,9 @@ router.post('/', async (req, res) => {
     }
 
     let dateTime = complaint.createdAt.split('T')
-    let dt = dateTime.split('.')
     await twilioClient.messages.create({
         from: `whatsapp:+14155238886`,
-        body: `Hey, Your complaint has been registered.\n\n\nHere are your details:\n\n👤Name - ${complaint.victimName}\n\nAge: ${complaint.age}\n\nGender: ${complaint.gender == 'M' ? 'Male' : 'Female'}\n\n📄Complaint: ${complaint.complaint}\n\n☎Contact No. ${complaint.userInfo[0].phoneNumber}\n\nDate of Incident: ${dateTime[0]}\n\n⏳Time of Incident: ${dt[0]}\n\n\nTo Navigate using Google Maps Please use this link - http://maps.google.com/maps?q=${complaint.iLatitude},${complaint.iLongitude}`,
+        body: `Hey, Your complaint has been registered.\n\n\nHere are your details:\n\n👤Name - ${complaint.victimName}\n\nAge: ${complaint.age}\n\nGender: ${complaint.gender == 'M' ? 'Male' : 'Female'}\n\n📄Complaint: ${complaint.complaint}\n\n☎Contact No. ${complaint.userInfo[0].phoneNumber}\n\nDate of Incident: ${dateTime[0]}\n\n⏳Time of Incident: ${dateTime[1]}\n\n\nTo Navigate using Google Maps Please use this link - http://maps.google.com/maps?q=${complaint.iLatitude},${complaint.iLongitude}`,
         to: `whatsapp:+917726062540`
     })
     res.status(200).json({ status: 200, message: `Message Sent` })
