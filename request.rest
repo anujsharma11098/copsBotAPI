@@ -124,4 +124,13 @@ GET http://localhost:5000/api/dashboard/users
 Authorization: 
 
 
+### Send Complaint on whatsapp
+POST http://localhost:5000/api/whatsapp
+Content-Type: application/json
+
+{
+    "complaintId": "5ea181edce8d983b186c7ff5"
+}
+
+
 ###
