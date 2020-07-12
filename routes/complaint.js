@@ -324,4 +324,29 @@ router.put('/:id', authSuperAdmin, async (req, res) => {
     }
 })
 
+router.post('/userchat', authToken, (req, res) => {
+    console.log(req.body)
+    res.status(201).json({ status: 201, message: 'Done' })
+})
+
+router.post('/description', authToken, (req, res) => {
+    console.log(req.body)
+    res.status(201).json({ status: 201, message: 'Done' })
+})
+
+router.post('/date', authToken, (req, res) => {
+    console.log(req.body)
+    res.status(201).json({ status: 201, message: 'Done' })
+})
+
+router.post('/time', authToken, (req, res) => {
+    console.log(req.body)
+    res.status(201).json({ status: 201, message: 'Done' })
+})
+
+router.post('/location', authToken, (req, res) => {
+    console.log(req.body)
+    res.status(201).json({ status: 201, message: 'Done' })
+})
+
 module.exports = router
