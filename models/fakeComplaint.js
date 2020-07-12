@@ -9,6 +9,10 @@ const FakeComplaintSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    crimeCategory: {
+        type: String,
+        required: true
+    },
     complaint: {
         type: String,
         required: true
@@ -30,6 +34,18 @@ const FakeComplaintSchema = new mongoose.Schema({
         required: true
     },
     region: {
+        type: String,
+        required: true
+    },
+    landmark: {
+        type: String,
+        required: true
+    },
+    dateOfIncident: {
+        type: String,
+        required: true
+    },
+    timeOfIncident: {
         type: String,
         required: true
     },

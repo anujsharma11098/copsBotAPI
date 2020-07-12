@@ -84,13 +84,17 @@ POST http://localhost:5000/api/complaints
 Content-Type: application/json
 
 {
-    "authorization": "",
-    "victimName": "Pappu",
-    "complaint": "Child Labor",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZjBhOWIyYzEwODJkNTM5YmM3YWE0YjdcIixcIm5hbWVcIjpcIkJoYXZpdCBLYW50aGFsaWFcIixcInBob25lTnVtYmVyXCI6NzU5NzkxNzAwNyxcIklNRUlcIjoxNjQ2MTU0LFwibGF0aXR1ZGVcIjoyMy40MzI1MjEsXCJsb25naXR1ZGVcIjo3My40MzI1MTUsXCJwYXNzd29yZFwiOlwiJDJhJDEwJGZ1WTJRODZTUjQwODQzVTZ5ZHVRbk9MNGtzT3lNT2NDRzhLVjAzd2hJM1cwZVUyNTNHQkZ1XCIsXCJjcmVhdGVkQXRcIjpcIjIwMjAtMDctMTJUMDU6MTA6MDQuMjI3WlwiLFwidXBkYXRlZEF0XCI6XCIyMDIwLTA3LTEyVDA1OjEwOjA0LjIyN1pcIixcIl9fdlwiOjB9IiwiaWF0IjoxNTk0NTMwNjUwfQ.2L12RwLY8d3l962WqWiGpBuJ2Qc14nVB1bDXD0uD23E",
+    "victimName": "Anuj",
+    "complaint": "Theft at my house",
+    "crimeCategory":"Theft",
     "age":"24",
     "gender": "M",
     "iLatitude":"23.453265",
-    "iLongitude":"73.432515"
+    "iLongitude":"73.432515",
+    "landmark":"Techno India NJR",
+    "dateOfIncident":"12-07-2020",
+    "timeOfIncident":"09:00 AM"
 }
 
 

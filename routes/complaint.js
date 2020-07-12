@@ -198,19 +198,17 @@ router.get('/:id', authAdmin, async (req, res) => {
 })
 
 router.post('/', authToken, async (req, res) => {
-    console.log(req.body)
-    res.json({ status: 200, message: 'Done' })
-    // const { victimName, complaint, age, gender, iLatitude, iLongitude } = req.body
-    // const region = getRegion(iLatitude, iLongitude)
-    // try {
-    //     await Complaint.create({
-    //         userId: req.user._id, victimName, complaint, age, gender, iLatitude, iLongitude, region, status: 0
-    //     })
-    //     res.status(201).json({ status: 201, message: 'Complaint Registered Successfully!' })
-    // } catch (err) {
-    //     console.log(err)
-    //     res.status(500).json({ status: 500, error: err })
-    // }
+    const { victimName, complaint, crimeCategory, age, gender, iLatitude, iLongitude, landmark, dateOfIncident, timeOfIncident } = req.body
+    const region = getRegion(iLatitude, iLongitude)
+    try {
+        await Complaint.create({
+            userId: req.user._id, victimName, complaint, crimeCategory, age, gender, iLatitude, iLongitude, landmark, dateOfIncident, timeOfIncident, region, status: 0
+        })
+        res.status(201).json({ status: 201, message: 'Complaint Registered Successfully!' })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ status: 500, error: err })
+    }
 })
 
 router.checkout('/:id', authAdmin, async (req, res) => {
