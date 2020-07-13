@@ -53,3 +53,20 @@ router.post('/register', authSuperAdmin, async (req, res) => {
 })
 
 module.exports = router
+
+// Use this function to create super admin
+// async function createSuperAdmin() {
+//     try {
+//         await DashboardUser.create({
+//             username: 'superadmin',
+//             password: await bcrypt.hash('password', 10),
+//             region: 'all',
+//             role: 'superadmin'
+//         })
+//         console.log('Created Super Admin!')
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// createSuperAdmin()
