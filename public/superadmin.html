@@ -173,6 +173,8 @@
                                 <div class="tital">Complaint :&emsp;&emsp;&emsp;<span id="complaints"
                                         style="color:#FFFFFF;">
                                     </span></div>
+                                <div class="tital">Crime Category :&emsp;&emsp;&emsp;<span id="crime" style="color:#FFFFFF;">
+                                    </span></div>
                                 <div class="tital">Age :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="age"
                                         style="color:#FFFFFF;"> </span></div>
                                 <div class="tital">Gender :&emsp;&emsp;&emsp;&emsp;&emsp;<span id="gender"
@@ -505,14 +507,13 @@
                     console.log(json)
                     $('#fullName').text(json.complaint.victimName)
                     $('#complaints').text(json.complaint.complaint)
+                    $('#crime').text(json.complaint.crimeCategory)
                     $('#age').text(json.complaint.age)
                     $('#imei').text(json.complaint.userInfo[0].IMEI)
                     $('#phno').text(json.complaint.userInfo[0].phoneNumber)
-                    let d = json.complaint.createdAt
-                    d = d.split('T')
-                    $('#date').text(d[0])
-                    $('#time').text(d[1])
-                    $('#place').text(json.complaint.iLatitude + ' ' + json.complaint.iLongitude)
+                    $('#date').text(json.complaint.dateOfIncident)
+                    $('#time').text(json.complaint.timeOfIncident)
+                    $('#place').text(json.complaint.landmark)
                     switch (json.complaint.gender) {
                         case 'M':
                             $('#gender').text('Male')
