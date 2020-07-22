@@ -7,12 +7,7 @@ const app = express()
 
 const mongodb = require('./db/MongoDB')
 
-app.use(cors({
-    origin: '*',
-    methods: 'GET,POST,PUT,CHECKOUT,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-}))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
