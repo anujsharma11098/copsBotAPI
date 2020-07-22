@@ -51,7 +51,7 @@ router.post('/', authToken, async (req, res) => {
             incidentDesc,
             iLatitude,
             iLongitude,
-            evidence
+            evidence: evidence.includes('?alt=media') ? evidence : evidence + '?alt=media'
         })
         res.status(201).json({
             status: 201,
