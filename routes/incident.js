@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     res.json({ status: 200, incidents })
 })
 
-router.post('/', uploader.single('image'), authToken, async (req, res) => {
+router.post('/', uploader.single('evidence'), authToken, async (req, res) => {
     console.log(req.body);
     console.log(req.file);
     if (!req.file)
