@@ -142,7 +142,6 @@
                                     <thead class="mdb-color darken-3">
                                         <tr class="text-white">
                                             <th>Sr. No.</th>
-                                            <th>Full Name</th>
                                             <th>Description</th>
                                             <th>Evidence (Image)</th>
                                             <th>Location</th>
@@ -178,7 +177,7 @@
 
                             <!-- Modal body -->
                             <div class="modal-body" style="margin: 15px;background-color:#3C4858">
-                                
+                                <img id="evidence">
                             </div>
 
                             <!-- Modal footer -->
@@ -397,12 +396,51 @@
             });
         </script>
         <script>
-            // $(document).ready(() => {
-            //     getComplaints()
-            //     setInterval(() => {
-            //         getComplaints()
-            //     }, 10000)
-            // })
+            $(document).ready(() => {
+                getIncident()
+                setInterval(() => {
+                    getIncident()
+                }, 1000)
+            })
+            let ogIncident
+            const getIncident = async () => {
+                let result = await fetch('https://copsbot-api.herokuapp.com/api/incident', {
+                    headers: {
+                        'Authorization': user.token
+                    }
+                })
+                result = await result.json()
+                const fetchedIncidents = result.incident
+                let element
+                let c = 1
+                for (let i = fetchedIncidents.length - 1; i >= 0; i--) {
+                    let e = `<tr>
+                    <th scope="row">${c}<input type='text' hidden='true' value='${fetchedIncidents[i]._id}'></th>
+                    <td>${fetchedIncidents[i].incidentDesc}</td>
+                    ${button}
+                    <td><a href="./map.html?lat=${fetchedIncidents[i].iLatitude}&lng=${fetchedIncidents[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
+                    <td><a class="btn btn-sm btn-default" onclick="info('${fetchedIncidents[i]._id}')" >Evidence</a></td>
+                    </tr>`
+                    element = element + e
+                    c++
+                }
+                $('.Incident').empty()
+                $('.Incident').append(element)
+                ogIncident = element
+               
+            }
+            function info(id) {
+                console.log(id)
+                fetch(`https://copsbot-api.herokuapp.com/api/incident/${id}`, {
+                    headers: {
+                        'Authorization': user.token
+                    }
+                }).then(res => res.json()).then(json => {
+                    console.log(json)
+                   $('#evidence').attr('src',json.incident.evidence)
+                }).catch(err => console.log(err))
+                $("#myModal").modal()
+            }
             
         </script>
 </body>
