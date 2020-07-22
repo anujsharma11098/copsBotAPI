@@ -10,6 +10,15 @@ router.get('/', async (req, res) => {
     res.json({ status: 200, incidents })
 })
 
+router.get('/:id', async (req, res) => {
+    try {
+        const incidents = await Incident.findOne({ _id: req.params.id })
+        res.json({ status: 200, incidents })
+    } catch (err) {
+        res.status(400).json({ status: 400, message: 'Invalid Object Id!' })
+    }
+})
+
 router.post('/', authToken, async (req, res) => {
     const { incidentDesc, iLatitude, iLongitude, evidence } = req.body
     if (!incidentDesc)
