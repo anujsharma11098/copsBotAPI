@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const incidents = await Incident.findOne({ _id: req.params.id })
-        res.json({ status: 200, incidents })
+        const incident = await Incident.findOne({ _id: req.params.id })
+        res.json({ status: 200, incident })
     } catch (err) {
         res.status(400).json({ status: 400, message: 'Invalid Object Id!' })
     }

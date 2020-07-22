@@ -145,7 +145,7 @@
                                             <th>Description</th>
                                             <th>Evidence (Image)</th>
                                             <th>Location</th>
-                                            
+
 
                                         </tr>
                                     </thead>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
 
-                
+
                 <footer class="footer">
                     <div class="container-fluid">
                         <nav class="float-left">
@@ -410,14 +410,13 @@
                     }
                 })
                 result = await result.json()
-                const fetchedIncidents = result.incident
+                const fetchedIncidents = result.incidents
                 let element
                 let c = 1
                 for (let i = fetchedIncidents.length - 1; i >= 0; i--) {
                     let e = `<tr>
                     <th scope="row">${c}<input type='text' hidden='true' value='${fetchedIncidents[i]._id}'></th>
                     <td>${fetchedIncidents[i].incidentDesc}</td>
-                    ${button}
                     <td><a href="./map.html?lat=${fetchedIncidents[i].iLatitude}&lng=${fetchedIncidents[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
                     <td><a class="btn btn-sm btn-default" onclick="info('${fetchedIncidents[i]._id}')" >Evidence</a></td>
                     </tr>`
@@ -427,7 +426,7 @@
                 $('.Incident').empty()
                 $('.Incident').append(element)
                 ogIncident = element
-               
+
             }
             function info(id) {
                 console.log(id)
@@ -437,11 +436,11 @@
                     }
                 }).then(res => res.json()).then(json => {
                     console.log(json)
-                   $('#evidence').attr('src',json.incident.evidence)
+                    $('#evidence').attr('src', json.incident.evidence)
                 }).catch(err => console.log(err))
                 $("#myModal").modal()
             }
-            
+
         </script>
 </body>
 
