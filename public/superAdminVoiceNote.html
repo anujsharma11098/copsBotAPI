@@ -64,7 +64,7 @@
                             <p>Reported Incidents</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link" href="superAdminVoiceNote.html">
                             <i class="material-icons"><i class="fas fa-check-circle"></i></i>
                             <p>Voice Notes</p>
@@ -98,7 +98,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:void(0)">ALL COMPLAINTS</a>
+                        <a class="navbar-brand" href="javascript:void(0)">Voice Notes</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -148,20 +148,14 @@
                                     <thead class="mdb-color darken-3">
                                         <tr class="text-white">
                                             <th>Sr. No.</th>
-                                            <th>Full Name</th>
-                                            <th>Complaints</th>
-                                            <th>Status</th>
+                                            <th>Voice Note</th>
                                             <th>Location</th>
-                                            <th>Data</th>
-                                            <th>Share</th>
-                                            <th>Region</th>
-
                                         </tr>
                                     </thead>
                                     <!--Table head-->
                                     <!--Table body-->
 
-                                    <tbody class="complaints">
+                                    <tbody class="voicenote">
 
 
                                     </tbody>
@@ -173,86 +167,8 @@
 
 
                 </div>
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="background-color:#212529; color:#eee;">
 
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Info</h4>
-                                <button type="button" class="close" data-dismiss="modal"
-                                    style="color:#FFFFFF;">&times;</button>
-                            </div>
 
-                            <!-- Modal body -->
-                            <div class="modal-body" style="margin: 15px;background-color:#3C4858">
-                                <div class="tital">Full Name :&emsp;&emsp;&emsp;<span id="fullName"
-                                        style="color:#FFFFFF;width:100%;"> </span></div>
-                                <div class="tital">Complaint :&emsp;&emsp;&emsp;<span id="complaints"
-                                        style="color:#FFFFFF;">
-                                    </span></div>
-                                <div class="tital">Crime Category :&emsp;&emsp;&emsp;<span id="crime" style="color:#FFFFFF;">
-                                    </span></div>
-                                <div class="tital">Age :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="age"
-                                        style="color:#FFFFFF;"> </span></div>
-                                <div class="tital">Gender :&emsp;&emsp;&emsp;&emsp;&emsp;<span id="gender"
-                                        style="color:#FFFFFF;"> </span></div>
-                                <div class="tital">Phone Number :&emsp;<span id="phno" style="color:#FFFFFF"></span>
-                                </div>
-                                <div class="tital">IMEI :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i id="imei"
-                                        style="color:#FFFFFF;"> </i></div>
-                                <div class="tital">Date of Incident :&emsp;<span id="date" style="color:#FFFFFF;">
-                                    </span></div>
-                                <div class="tital">Time of Incident :&emsp;<span id="time" style="color:#FFFFFF;">
-                                    </span></div>
-                                <div class="tital">Place of Incident :&emsp;<span id="place" style="color:#FFFFFF;">
-                                    </span></div>
-                                <div class="tital">Status :&emsp;&emsp;&emsp;&emsp;&emsp;<span id="status"
-                                        style="color:#FFFFFF;"> </span></div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal" id="my_Modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="background-color:#212529; color:#FFFFFF; ">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Send to Whatsapp</h4>
-                                <button type="button" class="close" data-dismiss="modal"
-                                    style="color:#FFFFFF;">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body" style="background-color:#3C4858;">
-                                <!--                                <form>-->
-                                <!--                                    <div class="form-group">-->
-                                <!--                                        <label for="phn"><b>Phone Number</b></label>-->
-                                <!--                                        <input type="text" class="form-control" id="phn"-->
-                                <!--                                            placeholder="Enter Mobile number" style="color:black">-->
-                                <input type="text" hidden="true" id="u_id">
-                                <!--                                    </div>-->
-                                <!--                                </form>-->
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <a id="" onclick="notify()" class="btn btn-default">Submit</a>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
                 <footer class="footer">
                     <div class="container-fluid">
                         <nav class="float-left">
@@ -459,172 +375,42 @@
         </script>
         <script>
             $(document).ready(() => {
-                getComplaints()
-                setInterval(() => {
-                    getComplaints()
-                }, 10000)
+                getVoiceNote()
+                setVoiceNote(() => {
+                    getVoiceNote()
+                }, 1000)
             })
-            let ogComplaints
-            const getComplaints = async () => {
-                let result = await fetch('https://copsbot-api.herokuapp.com/api/complaints', {
+            let ogIncident
+            const getVoiceNote = async () => {
+                let result = await fetch('https://copsbot-api.herokuapp.com/api/voiceNote', {
                     headers: {
                         'Authorization': user.token
                     }
                 })
                 result = await result.json()
-                const fetchedComplaints = result.complaints
+                const fetchedVoiceNote = result.voiceNotes
                 let element
                 let c = 1
-                for (let i = fetchedComplaints.length - 1; i >= 0; i--) {
-                    let button
-                    switch (fetchedComplaints[i]['status']) {
-                        case 0:
-                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-warning" >Pending</a></td>`
-                            break;
-                        case 1:
-                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-success">Active</a></td>`
-                            break;
-                        case 2:
-                            button = `<td><a id="${fetchedComplaints[i]._id}" class="btn btn-sm btn-danger">Closed</a></td>`
-                            break;
-                    }
+                for (let i = fetchedVoiceNote.length - 1; i >= 0; i--) {
                     let e = `<tr>
-                    <th scope="row">${c}<input type='text' hidden='true' value='${fetchedComplaints[i]._id}'></th>
-                                <td>${fetchedComplaints[i].victimName}</td>
-                    <td>${fetchedComplaints[i].complaint}</td>
-                    ${button}
-                    <td><a href="./map.html?lat=${fetchedComplaints[i].iLatitude}&lng=${fetchedComplaints[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
-                    <td><a class="btn btn-sm btn-default" onclick="info('${fetchedComplaints[i]._id}')" >More Info</a></td>
-                    <td><a class="btn btn-sm btn-success" onclick="whatsapp('${fetchedComplaints[i]._id}')" ><i class="fab fa-whatsapp"></i></a></td>
-                    <td>${fetchedComplaints[i].region}</td>
+                    <th scope="row">${c}<input type='text' hidden='true' value='${fetchedVoiceNote[i]._id}'></th>
+                     <td><audio controls>
+                                <source src="${fetchedVoiceNote[i].voiceNote}" type="audio/ogg">
+                                <source src="${fetchedVoiceNote[i].voiceNote}" type="audio/mpeg">
+                                Your browser does not support the audio tag.
+                        </audio></td>
+                    <td><a href="./map.html?lat=${fetchedVoiceNote[i].iLatitude}&lng=${fetchedVoiceNote[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
+                   
                     </tr>`
                     element = element + e
                     c++
                 }
-                $('.complaints').empty()
-                $('.complaints').append(element)
-                ogComplaints = element
-                if (result.newComplaintsCount > 0) {
-                    iziToast.show({
-                        timeout: 3000,
-                        position: 'topRight',
-                        theme: 'dark',
-                        transitionIn: 'fadeInLeft',
-                        message: `${result.newComplaintsCount} New Complaints`
-                    });
-                }
-            }
-
-            function info(id) {
-                console.log(id)
-                fetch(`https://copsbot-api.herokuapp.com/api/complaints/${id}`, {
-                    headers: {
-                        'Authorization': user.token
-                    }
-                }).then(res => res.json()).then(json => {
-                    console.log(json)
-                    $('#fullName').text(json.complaint.victimName)
-                    $('#complaints').text(json.complaint.complaint)
-                    $('#crime').text(json.complaint.crimeCategory)
-                    $('#age').text(json.complaint.age)
-                    $('#imei').text(json.complaint.userInfo[0].IMEI)
-                    $('#phno').text(json.complaint.userInfo[0].phoneNumber)
-                    $('#date').text(json.complaint.dateOfIncident)
-                    $('#time').text(json.complaint.timeOfIncident)
-                    $('#place').text(json.complaint.landmark)
-                    switch (json.complaint.gender) {
-                        case 'M':
-                            $('#gender').text('Male')
-                            break;
-                        case 'F':
-                            $('#gender').text('Female')
-                            break;
-                        default:
-                            $('#gender').text('Other')
-                            break;
-                    }
-                    switch (json.complaint.status) {
-                        case 0:
-                            $('#status').text('Pending')
-                            break;
-                        case 1:
-                            $('#status').text('Active')
-                            break;
-                    }
-                }).catch(err => console.log(err))
-                $("#myModal").modal()
-            }
-
-            function whatsapp(id) {
-                $('#u_id').val(id)
-                $("#my_Modal").modal()
-            }
-            async function notify() {
-
-                let obj = {
-                    complaintId: $('#u_id').val()
-                }
-                $("#my_Modal").modal('toggle')
-                let result = await fetch('https://copsbot-api.herokuapp.com/api/whatsapp', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': user.token,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(obj)
-                })
-                result = await result.json()
-                console.log(result)
-                iziToast.show({
-                    timeout: 3000,
-                    position: 'topRight',
-                    icon: 'fas fa-check-circle',
-                    iconColor: 'green',
-                    backgroundColor: '#61F75F',
-                    transitionIn: 'fadeInLeft',
-                    message: `Data sent Successfully !!`
-                });
+                $('.voicenote').empty()
+                $('.voicenote').append(element)
+                ogIncident = element
 
             }
-
-            const search = () => {
-                const searchInput = $('#search-input').val().toLowerCase()
-                if (searchInput == '' || searchInput == null) {
-                    $('.complaints').empty()
-                    $('.complaints').append(ogComplaints)
-                    return
-                }
-                const resultRows = []
-                const tbody = document.querySelector('.complaints')
-                const rows = tbody.getElementsByTagName('tr')
-                rows.forEach(row => {
-                    const head = row.getElementsByTagName('th')
-                    const id = head[0].getElementsByTagName('input')[0].value.toLowerCase()
-                    if (searchInput == id) {
-                        resultRows.push(row)
-                        return
-                    }
-                    const columns = row.getElementsByTagName('td')
-                    const firstColData = columns[0].textContent.toLowerCase()
-                    if (firstColData.includes(searchInput)) {
-                        resultRows.push(row)
-                        return
-                    }
-                    const secondColData = columns[1].textContent.toLowerCase()
-                    if (secondColData.includes(searchInput)) {
-                        resultRows.push(row)
-                        return
-                    }
-                    const lastColData = columns[6].textContent.toLowerCase()
-                    if (lastColData.includes(searchInput)) {
-                        resultRows.push(row)
-                        return
-                    }
-                })
-                $('.complaints').empty()
-                resultRows.forEach(row => $('.complaints').append(row))
-            }
-
+            
 
         </script>
 </body>
