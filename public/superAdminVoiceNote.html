@@ -376,7 +376,7 @@
         <script>
             $(document).ready(() => {
                 getVoiceNote()
-                setVoiceNote(() => {
+                setInterval(() => {
                     getVoiceNote()
                 }, 1000)
             })
