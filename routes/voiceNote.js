@@ -6,21 +6,21 @@ const authToken = require('../middlewares/authToken')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    const voiceNotes = await VoiceNote.find()
-    res.json({ status: 200, voiceNotes })
+    const voicenotes = await VoiceNote.find()
+    res.json({ status: 200, voicenotes })
 })
 
 router.get('/:id', async (req, res) => {
     try {
-        const voiceNotes = await VoiceNote.findOne({ _id: req.params.id })
-        res.json({ status: 200, voiceNotes })
+        const voicenote = await VoiceNote.findOne({ _id: req.params.id })
+        res.json({ status: 200, voicenote })
     } catch (err) {
         res.status(400).json({ status: 400, message: 'Invalid Object Id!' })
     }
 })
 
 router.post('/', authToken, async (req, res) => {
-    const { iLatitude, iLongitude, voiceNote } = req.body
+    const {  iLatitude, iLongitude, audio } = req.body
     if (!iLatitude)
         return res.status(400).json({
             status: 400,
@@ -33,18 +33,18 @@ router.post('/', authToken, async (req, res) => {
             success: false,
             message: 'iLongitude is required!'
         })
-    if (!voiceNote)
+    if (!audio)
         return res.status(400).json({
             status: 400,
             success: false,
-            message: 'voiceNote is required!'
+            message: 'Audio is required!'
         })
     try {
-        const voiceNotes = await VoiceNote.create({
+        const voiceNote = await VoiceNote.create({
             userId: req.user._id,
             iLatitude,
             iLongitude,
-            voiceNote: voiceNotes.includes('?alt=media') ? voiceNotes : voiceNotes + '?alt=media'
+            audio: audio.includes('?alt=media') ? audio : audio + '?alt=media'
         })
         res.status(201).json({
             status: 201,

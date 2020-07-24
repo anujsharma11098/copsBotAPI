@@ -5,7 +5,7 @@ const VoiceNoteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    voiceNote: {
+    audio: {
         type: String,
         required: true
     },
