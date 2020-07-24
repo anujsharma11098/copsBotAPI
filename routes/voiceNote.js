@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const voiceNote = await VoiceNote.findOne({ _id: req.params.id })
-        res.json({ status: 200, voiceNote })
+        const voiceNotes = await VoiceNote.findOne({ _id: req.params.id })
+        res.json({ status: 200, voiceNotes })
     } catch (err) {
         res.status(400).json({ status: 400, message: 'Invalid Object Id!' })
     }
@@ -40,11 +40,11 @@ router.post('/', authToken, async (req, res) => {
             message: 'voiceNote is required!'
         })
     try {
-        const voiceNote = await VoiceNote.create({
+        const voiceNotes = await VoiceNote.create({
             userId: req.user._id,
             iLatitude,
             iLongitude,
-            voiceNote: voiceNote.includes('?alt=media') ? voiceNote : voiceNote + '?alt=media'
+            voiceNote: voiceNotes.includes('?alt=media') ? voiceNotes : voiceNotes + '?alt=media'
         })
         res.status(201).json({
             status: 201,
