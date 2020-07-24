@@ -395,8 +395,8 @@
                     let e = `<tr>
                     <th scope="row">${c}<input type='text' hidden='true' value='${fetchedVoiceNote[i]._id}'></th>
                      <td><audio controls>
-                                <source src="${fetchedVoiceNote[i].voiceNote}" type="audio/ogg">
-                                <source src="${fetchedVoiceNote[i].voiceNote}" type="audio/mpeg">
+                                <source src="${fetchedVoiceNote[i].audio}" type="audio/ogg">
+                                <source src="${fetchedVoiceNote[i].audio}" type="audio/mpeg">
                                 Your browser does not support the audio tag.
                         </audio></td>
                     <td><a href="./map.html?lat=${fetchedVoiceNote[i].iLatitude}&lng=${fetchedVoiceNote[i].iLongitude}" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-map-marker"></span>Map</a></td>
