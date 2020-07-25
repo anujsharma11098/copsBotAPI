@@ -107,22 +107,22 @@
                                 <div class="form-group">
                             
                                     <div class="col-xs-6">
-                                        <label for="first_name">
+                                        <label for="title">
                                             <h4>Title </h4>
                                         </label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Title">
+                                        <input type="text" class="form-control" name="title" id="title" placeholder="Title">
                                     </div>
                                 </div>
                                 <div class="form-group">
                             
                                     <div class="col-xs-6">
-                                        <label for="last_name">
+                                        <label for="msg">
                                             <h4>Alert Message</h4>
                                         </label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Messsage">
+                                        <input type="text" class="form-control" name="msg" id="msg" placeholder="Messsage">
                                     </div>
                                 </div>
-                                <td><a  class="btn btn-sm btn-warning">SEND</a></td>
+                                <td><a  class="btn btn-sm btn-primary">SEND</a></td>
                                 
                             </form>
                         </div>
@@ -336,7 +336,24 @@
             });
         </script>
         <script>
-          
+           const sendInterest = async () => {
+                let obj = {
+                    "title": $('#title').val(),
+                    "alertMsg": $('#msg').val()
+
+                }
+
+                let result = await fetch('https://copsbot-api.herokuapp.com/api/alert', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(obj)
+                })
+                const json = await result.json()
+
+
+            }
 
         </script>
 </body>
