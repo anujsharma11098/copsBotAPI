@@ -137,4 +137,6 @@ Content-Type: application/json
 }
 
 
-###
+### get alert
+
+GET http://localhost:5000/api/alert 

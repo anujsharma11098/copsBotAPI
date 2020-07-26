@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     const Alerts = await Alert.find()
-    res.json({ status: 200, Alerts })
+    res.json(Alerts)
 })
 
 
