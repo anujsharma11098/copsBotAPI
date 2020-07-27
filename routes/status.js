@@ -11,7 +11,7 @@ const { getRegion } = require('../util')
 const authAdmin = require('../middlewares/authAdmin')
 const authSuperAdmin = require('../middlewares/authSuperAdmin')
 
-router.get('/:id', authToken, async (req, res) => {
+router.get('/', async (req, res) => {
     let complaints
     let complaint
     try {
@@ -19,7 +19,7 @@ router.get('/:id', authToken, async (req, res) => {
             complaints = await Complaint.aggregate([
                 {
                     $match: {
-                        _id: mongoose.Types.ObjectId(req.params.id)
+                        userId: mongoose.Types.ObjectId(req.headers.id)
                     }
                 },
                 {
@@ -38,10 +38,10 @@ router.get('/:id', authToken, async (req, res) => {
     } catch (err) {
         return res.status(404).json({ status: 404, message: 'Invalid Id' })
     }
-    complaint = complaints[0]
-    if (!complaint)
+    
+    if (!complaints)
         return res.status(404).json({ status: 404, message: 'Not Found' })
-    res.json({ status: 200, complaints })
+    res.json( complaints )
 })
 
 module.exports = router

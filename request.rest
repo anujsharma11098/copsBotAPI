@@ -10,9 +10,9 @@ POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-    "name": "Bhavit Kanthalia",
-    "phoneNumber": "7597917007",
-    "IMEI": "1646154",
+    "name": "Anuj Sharma",
+    "phoneNumber": "7726062540",
+    "IMEI": "1646155",
     "latitude": "23.432521",
     "longitude": "73.432515",
     "password": "password"
@@ -84,11 +84,11 @@ POST http://localhost:5000/api/complaints
 Content-Type: application/json
 
 {
-    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZjBhOWIyYzEwODJkNTM5YmM3YWE0YjdcIixcIm5hbWVcIjpcIkJoYXZpdCBLYW50aGFsaWFcIixcInBob25lTnVtYmVyXCI6NzU5NzkxNzAwNyxcIklNRUlcIjoxNjQ2MTU0LFwibGF0aXR1ZGVcIjoyMy40MzI1MjEsXCJsb25naXR1ZGVcIjo3My40MzI1MTUsXCJwYXNzd29yZFwiOlwiJDJhJDEwJGZ1WTJRODZTUjQwODQzVTZ5ZHVRbk9MNGtzT3lNT2NDRzhLVjAzd2hJM1cwZVUyNTNHQkZ1XCIsXCJjcmVhdGVkQXRcIjpcIjIwMjAtMDctMTJUMDU6MTA6MDQuMjI3WlwiLFwidXBkYXRlZEF0XCI6XCIyMDIwLTA3LTEyVDA1OjEwOjA0LjIyN1pcIixcIl9fdlwiOjB9IiwiaWF0IjoxNTk0NTMwNjUwfQ.2L12RwLY8d3l962WqWiGpBuJ2Qc14nVB1bDXD0uD23E",
-    "victimName": "Anuj",
-    "complaint": "Theft at my house",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZjFlYTU1Yzk2YzFmMDIyZTA2MzY5OTNcIixcIm5hbWVcIjpcIkFudWogU2hhcm1hXCIsXCJwaG9uZU51bWJlclwiOjc3MjYwNjI1NDAsXCJJTUVJXCI6MTY0NjE1NSxcImxhdGl0dWRlXCI6MjMuNDMyNTIxLFwibG9uZ2l0dWRlXCI6NzMuNDMyNTE1LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRXQ0NmanprN3RjTlRKcUlCQ2l3SUpPMkhaUTlDRDQvUlF4ckdhbUNBdDFhMnNhdXhUeEVVLlwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA3LTI3VDA5OjU4OjUyLjYzNlpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNy0yN1QwOTo1ODo1Mi42MzZaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU5NTg0MzkzMn0.nbXoDRVOg19Z2h-KvsZygnbK7lvFxruRQzjkQ1pBxSw",
+    "victimName": "Test",
+    "complaint": "Testing",
     "crimeCategory":"Theft",
-    "age":"24",
+    "age":"21",
     "gender": "M",
     "iLatitude":"23.453265",
     "iLongitude":"73.432515",
@@ -139,4 +139,7 @@ Content-Type: application/json
 
 ### get alert
 
-GET http://localhost:5000/api/alert 
+GET http://localhost:5000/api/status
+id:5f0a9b2c1082d539bc7aa4b7
+
+ 
