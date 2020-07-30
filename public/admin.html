@@ -62,7 +62,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" id="regionComplaints" href="javascript:void(0)"> </a>
+                        <a class="navbar-brand" href="javascript:void(0)">STATION COMPLAINTS </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -459,7 +459,6 @@
                 result = await result.json()
                 const fetchedComplaints = result.complaints
                 let element
-                let r
                 let c = 1
                 for (let i = fetchedComplaints.length - 1; i >= 0; i--) {
                     let button
@@ -484,13 +483,11 @@
                     <td><a class="btn btn-sm btn-success" onclick="whatsapp('${fetchedComplaints[i]._id}')" ><i class="fab fa-whatsapp"></i></a></td>
                     <td><a class="btn btn-sm btn-danger" onclick="delete_complaint('${fetchedComplaints[i]._id}')" ><i class="fas fa-trash"></i></a></td>
                     </tr>`
-                    r=`<h3>${fetchedComplaints[0].region}</h3>`
                     element = element + e
                     c++
                 }
                 $('.complaints').empty()
                 $('.complaints').append(element)
-                $('#regionComplaints').append(r)
                 ogComplaints = element
                 if (result.newComplaintsCount > 0) {
                     iziToast.show({
