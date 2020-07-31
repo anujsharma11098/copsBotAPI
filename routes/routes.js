@@ -15,6 +15,7 @@ router.use('/api/incident', require('./incident'))
 router.use('/api/voiceNote', require('./voiceNote'))
 router.use('/api/alert', require('./alert'))
 router.use('/api/status', require('./status'))
+router.use('/api/remark', require('./remark'))
 
 
 module.exports = router

@@ -143,3 +143,14 @@ GET http://localhost:5000/api/status
 id:5f0a9b2c1082d539bc7aa4b7
 
  
+### Send Remark
+POST http://localhost:5000/api/remark
+Content-Type: application/json
+
+{
+    "complaintId": "5f227393d1663a00176f4d42",
+    "remark":"testing"
+}
+
+### Get Remark
+GET http://localhost:5000/api/remark
