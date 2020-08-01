@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     if (!complaintId) return res.status(400).json({ status: 400, message: `'complaintId' is required` })
     let complaint
     try {
-        let fetchedComplaint = await fetch(`http://localhost:${port}/api/complaints/${complaintId}`, {
+        let fetchedComplaint = await fetch(`http://copsbot-api.herokuapp.com/api/complaints/${complaintId}`, {
             headers: {
                 Authorization: req.headers.authorization
             }
