@@ -131,9 +131,10 @@ Authorization:
 ### Send Complaint on whatsapp
 POST http://localhost:5000/api/whatsapp
 Content-Type: application/json
+Authorization: 
 
 {
-    "complaintId": "5ea181edce8d983b186c7ff5"
+    "complaintId": "5f227393d1663a00176f4d42"
 }
 
 
