@@ -518,7 +518,7 @@
                     <td><a class="btn btn-sm btn-success" onclick="whatsapp('${fetchedComplaints[i]._id}')" ><i class="fab fa-whatsapp"></i></a></td>
                     <td><a class="btn btn-sm btn-danger" onclick="delete_complaint('${fetchedComplaints[i]._id}')" ><i class="fas fa-trash"></i></a></td>
                     <td><a class="btn btn-sm btn-success" onclick="add_remark('${fetchedComplaints[i]._id}')" ><i class="fa fa-plus"></i></a></td>
-                    <td><ul id=${fetchedComplaints[i]._id} ></ul></td>
+                    <td><ul id=i${fetchedComplaints[i]._id} ></ul></td>
                     </tr>`
                     element = element + e
                     c++
@@ -750,7 +750,7 @@
                 } else {
                     var x = $('#u_id1').val();
                     console.log(x)
-                    $(`#${x}`).append(`<li>${inputValue}</li>`);
+                    $(`#i${x}`).append(`<li>${inputValue}</li>`);
                 }
                 document.getElementById("remark").value = "";
 
