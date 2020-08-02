@@ -17,6 +17,7 @@ router.use('/api/alert', require('./alert'))
 router.use('/api/status', require('./status'))
 router.use('/api/remark', require('./remark'))
 router.use('/api/sos', require('./sos'))
+router.use('/api/charts', require('./chart'))
 
 
 module.exports = router
