@@ -200,6 +200,7 @@ router.get('/:id', authAdmin, async (req, res) => {
 router.post('/', authToken, async (req, res) => {
     const { victimName, complaint, crimeCategory, age, gender, iLatitude, iLongitude, landmark, dateOfIncident, timeOfIncident } = req.body
     const region = getRegion(iLatitude, iLongitude)
+    console.log(req.body)
     try {
         await Complaint.create({
             userId: req.user._id, victimName, complaint, crimeCategory, age, gender, iLatitude, iLongitude, landmark, dateOfIncident, timeOfIncident, region, status: 0
