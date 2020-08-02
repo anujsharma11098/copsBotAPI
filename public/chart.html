@@ -52,7 +52,7 @@
                             <p>Insight</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="superadmin.html">
                             <i class="material-icons">dashboard</i>
                             <p>Command Center</p>
@@ -144,8 +144,7 @@
                 <div class="container-fluid">
                     <div class="card mb-4">
                         <div class="card-body">
-                            
-                           <!-- write your code here -->
+                            <!-- write your code here -->
                         </div>
                     </div>
 
@@ -192,6 +191,7 @@
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="./static/material-dashboard.js?v=2.1.0"></script>
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
         <script src="./javascript/script.js"></script>
         <script src="./javascript/superadmin.js"></script>
         <script>
@@ -357,25 +357,19 @@
             });
         </script>
         <script>
-            const sendAlert = async () => {
-                let obj = {
-                    "title": $('#title').val(),
-                    "alertMsg": $('#msg').val()
-
+            fetch('https://copsbot-api.herokuapp.com/api/charts', {
+                headers: {
+                    Authorization: user.token
                 }
-
-                let result = await fetch('https://copsbot-api.herokuapp.com/api/alert', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(obj)
+            })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.status === 200) {
+                        const { categoriesWiseComplaints, status0Complaints, status1Complaints, status2Complaints } = json
+                        // TODO Anuj
+                    }
                 })
-                const json = await result.json()
-
-
-            }
-
+                .catch(err => console.log(err))
         </script>
 </body>
 
