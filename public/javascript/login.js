@@ -21,7 +21,7 @@ $('#loginForm').submit(async e => {
     else {
         setUser(json.user._id, json.user.username, json.user.region, json.user.role, json.token)
         if (json.user.role === 'superadmin')
-            location = '/superadmin.html'
+            location = '/chart.html'
         else
             location = '/admin.html'
     }
