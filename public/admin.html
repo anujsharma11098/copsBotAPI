@@ -748,8 +748,9 @@
                 if (inputValue === '') {
                     alert("You must write something!");
                 } else {
-                    var x = document.getElementById("u_id1").value;
+                    var x = $('#u_id1').val();
                     console.log(x)
+                    document.getElementById("u_id1").appendChild(li);
                 }
                 document.getElementById("remark").value = "";
 
