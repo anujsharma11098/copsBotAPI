@@ -750,7 +750,7 @@
                 } else {
                     var x = $('#u_id1').val();
                     console.log(x)
-                    document.getElementById(x).appendChild(li);
+                    $(`#${x}`).append(li);
                 }
                 document.getElementById("remark").value = "";
 
