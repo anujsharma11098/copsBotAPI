@@ -395,7 +395,8 @@
                     body: JSON.stringify(obj)
                 })
                 const json = await result.json()
-
+                document.getElementById("title").value = "";
+                document.getElementById("msg").value = "";
 
             }
 
