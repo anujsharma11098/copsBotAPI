@@ -119,6 +119,9 @@
                                             <th>Data</th>
                                             <th>Share</th>
                                             <th>Delete</th>
+                                            <th>Add Remark</th>
+                                            <th>Remarks</th>
+                                            
 
                                         </tr>
                                     </thead>
@@ -238,6 +241,38 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal" id="my_Modal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color:#212529; color:#FFFFFF; ">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Remark</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="color:#FFFFFF;">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" style="background-color:#3C4858;">
+                                
+                                <input type="text" hidden="true" id="u_id1">
+                               
+                                <label for="region">Remark :</label>
+                                <input type="text" class="form-control" id="remark" placeholder="Add Remark" style="color:black">
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a id="" onclick="new_remark()" class="btn btn-default">Add</a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <footer class="footer">
                     <div class="container-fluid">
                         <nav class="float-left">
@@ -482,6 +517,8 @@
                     <td><a class="btn btn-sm btn-default" onclick="info('${fetchedComplaints[i]._id}')" >More Info</a></td>
                     <td><a class="btn btn-sm btn-success" onclick="whatsapp('${fetchedComplaints[i]._id}')" ><i class="fab fa-whatsapp"></i></a></td>
                     <td><a class="btn btn-sm btn-danger" onclick="delete_complaint('${fetchedComplaints[i]._id}')" ><i class="fas fa-trash"></i></a></td>
+                    <td><a class="btn btn-sm btn-success" onclick="add_remark('${fetchedComplaints[i]._id}')" ><i class="fa fa-plus"></i></a></td>
+                    <td><ul id=${fetchedComplaints[i]._id} ></ul></td>
                     </tr>`
                     element = element + e
                     c++
@@ -694,6 +731,51 @@
 
             }
 
+
+
+            function add_remark(id) {
+                $('#u_id1').val(id)
+
+                $("#my_Modal1").modal()
+
+            }
+            async function new_remark() {
+
+                var li = document.createElement("li");
+                var inputValue = document.getElementById("remark").value;
+                var t = document.createTextNode(inputValue);
+                li.appendChild(t);
+                if (inputValue === '') {
+                    alert("You must write something!");
+                } else {
+                    document.getElementById("u_id1").appendChild(li);
+                }
+                document.getElementById("remark").value = "";
+
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                li.appendChild(span);
+
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function() {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                    }
+                    $("#my_Modal").modal('toggle')
+                iziToast.show({
+                    timeout: 3000,
+                    position: 'topRight',
+                    icon: 'fas fa-check-circle',
+                    iconColor: 'green',
+                    backgroundColor: '#61F75F',
+                    transitionIn: 'fadeInLeft',
+                    message: `Remark Added Successfully !!`
+                });
+
+            }
+        }
             const search = () => {
                 const resultRows = []
                 const searchInput = $('#search-input').val().toLowerCase()
