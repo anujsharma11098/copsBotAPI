@@ -133,8 +133,9 @@ POST http://localhost:5000/api/whatsapp
 Content-Type: application/json
 Authorization: 
 
+
 {
-    "complaintId": "5f227393d1663a00176f4d42"
+    "complaintId": "5f284a5b7ba5720017117f26"
 }
 
 
