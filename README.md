@@ -132,13 +132,13 @@ Click on thumbnail to go to video
 #### Dashboard
 This is our demo of dashboard hosted on heroku. click on the link to proceed.
 [ hosted Dashboard ](https://copsbot-api.herokuapp.com)
-Use Login Credentials as follows:<br>
+<!-- Use Login Credentials as follows:<br>
 1.Command Center:<br>
       username : superadmin<br>
       password : password<br>
 2.Station Admin:<br>
       username : jawarmines<br>
-      password : password<br>
+      password : password<br> -->
 
 
 
