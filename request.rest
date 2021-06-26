@@ -10,8 +10,9 @@ POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-    "name": "Anuj Sharma",
-    "phoneNumber": "7726062540",
+    "name": "Mendak Sharma",
+    "email": "anujsharma11098@gmail.com",
+    "phoneNumber": "7726062541",
     "IMEI": "1646155",
     "latitude": "23.432521",
     "longitude": "73.432515",
@@ -24,7 +25,7 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-    "phoneNumber": "7597917007",
+    "email": "anujsharma11098@gmail.com",
     "password": "password"
 }
 
@@ -84,17 +85,17 @@ POST http://localhost:5000/api/complaints
 Content-Type: application/json
 
 {
-    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI1ZjFlYTU1Yzk2YzFmMDIyZTA2MzY5OTNcIixcIm5hbWVcIjpcIkFudWogU2hhcm1hXCIsXCJwaG9uZU51bWJlclwiOjc3MjYwNjI1NDAsXCJJTUVJXCI6MTY0NjE1NSxcImxhdGl0dWRlXCI6MjMuNDMyNTIxLFwibG9uZ2l0dWRlXCI6NzMuNDMyNTE1LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRXQ0NmanprN3RjTlRKcUlCQ2l3SUpPMkhaUTlDRDQvUlF4ckdhbUNBdDFhMnNhdXhUeEVVLlwiLFwiY3JlYXRlZEF0XCI6XCIyMDIwLTA3LTI3VDA5OjU4OjUyLjYzNlpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMC0wNy0yN1QwOTo1ODo1Mi42MzZaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTU5NTg0MzkzMn0.nbXoDRVOg19Z2h-KvsZygnbK7lvFxruRQzjkQ1pBxSw",
-    "victimName": "Test",
-    "complaint": "Testing",
-    "crimeCategory":"Theft",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI2MDFhNmNjNWUyNTcwZTQ2ZjQ4NzI4NzdcIixcIm5hbWVcIjpcIkFudWogU2hhcm1hXCIsXCJwaG9uZU51bWJlclwiOjc3MjYwNjI1NDAsXCJJTUVJXCI6MTY0NjE1NSxcImxhdGl0dWRlXCI6MjMuNDMyNTIxLFwibG9uZ2l0dWRlXCI6NzMuNDMyNTE1LFwicGFzc3dvcmRcIjpcIiQyYSQxMCRZNWZyY0VSTnRNVFhpaTNIdFhlejguZk5mSUE0cGg3MXdFbERUNC5hZXVzdTJIenFNZVlvdVwiLFwiY3JlYXRlZEF0XCI6XCIyMDIxLTAyLTAzVDA5OjI4OjM3LjA1MVpcIixcInVwZGF0ZWRBdFwiOlwiMjAyMS0wMi0wM1QwOToyODozNy4wNTFaXCIsXCJfX3ZcIjowfSIsImlhdCI6MTYxMjM0NDUzM30.tX4c3Vyff4-as1szPieUM-bfMYrgduWuJ5AiuWkQPnM",
+    "victimName": "Anuj Sharma",
+    "complaint": "Molestation",
+    "crimeCategory":"Molestation",
     "age":"21",
     "gender": "M",
-    "iLatitude":"23.453265",
-    "iLongitude":"73.432515",
-    "landmark":"Techno India NJR",
-    "dateOfIncident":"12-07-2020",
-    "timeOfIncident":"09:00 AM"
+    "iLatitude":"24.584286",
+    "iLongitude":"73.692635",
+    "landmark":"Mere ghr pr",
+    "dateOfIncident":"03-02-2021",
+    "timeOfIncident":"03:00 PM"
 }
 
 

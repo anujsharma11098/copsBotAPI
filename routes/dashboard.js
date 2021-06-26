@@ -54,7 +54,7 @@ router.post('/register', authSuperAdmin, async (req, res) => {
 
 module.exports = router
 
-// Use this function to create super admin
+// // Use this function to create super admin
 // async function createSuperAdmin() {
 //     try {
 //         await DashboardUser.create({
