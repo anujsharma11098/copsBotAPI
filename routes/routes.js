@@ -19,6 +19,7 @@ router.use('/api/remark', require('./remark'))
 router.use('/api/sos', require('./sos'))
 router.use('/api/charts', require('./chart'))
 router.use('/api/email', require('./email'))
+router.use('/api/feedback', require('./feedback'))
 
 
 module.exports = router
